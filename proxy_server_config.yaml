@@ -41,25 +41,8 @@ model_list:
     litellm_params:
       model: nlp_cloud/finetuned-llama-3-70b
       api_key: os.environ/NLP_CLOUD
-litellm_settings:
-  drop_params: True
-  # max_budget: 100 
-  # budget_duration: 30d
-  num_retries: 5
-  request_timeout: 600
-  telemetry: False
-  context_window_fallbacks: [{"codellama/CodeLlama-34b-Instruct-hf": ["codellama/CodeLlama-34b-Instruct-hf"]}]
-  drop_params: True
-  success_callback: ["langfuse"]
-
-general_settings: 
-  master_key: os.environ/API_KEY # [OPTIONAL] Use to enforce auth on proxy. See - https://docs.litellm.ai/docs/proxy/virtual_keys
-  proxy_budget_rescheduler_min_time: 60
-  proxy_budget_rescheduler_max_time: 64
-  proxy_batch_write_at: 1
-  # database_url: "postgresql://<user>:<password>@<host>:<port>/<dbname>" # [OPTIONAL] use for token-based auth to proxy
-
-environment_variables:
-LANGFUSE_PUBLIC_KEY: os.environ/LANGFUSE_PUBLIC_KEY
-LANGFUSE_SECRET_KEY: os.environ/LANGFUSE_SECRET_KEY
-LANGFUSE_HOST: os.environ/LANGFUSE_HOST
+router_settings:
+  redis_host: os.environ/REDIS_HOST 
+  redis_port: 6379
+general_settings:
+  master_key: os.environ/MASTER_KEY 
